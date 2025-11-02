@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événements - Tennis Club Allonnes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: "🎾";
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(255,255,255,0.1);
+            color: #f8c471;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(192, 57, 43, 0.8), rgba(231, 76, 60, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23c0392b" width="1200" height="400"/><circle fill="%23e74c3c" cx="150" cy="100" r="40"/><circle fill="%23e74c3c" cx="1050" cy="300" r="60"/><circle fill="%23e74c3c" cx="600" cy="200" r="30"/><rect fill="%23922b21" x="0" y="350" width="1200" height="50"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 70px;
+            z-index: 999;
+        }
+
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            background: transparent;
+            border: 2px solid #c0392b;
+            color: #c0392b;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-tab.active,
+        .filter-tab:hover {
+            background: #c0392b;
+            color: white;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #c0392b;
+        }
+
+        /* Events Grid */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-top: 4px solid #e74c3c;
+            opacity: 1;
+        }
+
+        .event-card.hidden {
+            display: none;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .event-image {
+            height: 200px;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+        }
+
+        .event-date {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255,255,255,0.9);
+            color: #c0392b;
+            padding: 0.5rem;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            min-width: 60px;
+        }
+
+        .event-type {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #f8c471;
+            color: #333;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .event-type.tournoi {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .event-type.stage {
+            background: #27ae60;
+            color: white;
+        }
+
+        .event-type.competition {
+            background: #8e44ad;
+            color: white;
+        }
+
+        .event-content {
+            padding: 1.5rem;
+        }
+
+        .event-title {
+            color: #c0392b;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .event-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .event-description {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .event-button {
+            background: linear-gradient(45deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .event-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .event-button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Calendar Section */
+        .calendar {
+            background: #f8f9fa;
+        }
+
+        .calendar-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-nav {
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .calendar-nav:hover {
+            background: #e74c3c;
+        }
+
+        .calendar-month {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #c0392b;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .calendar-day {
+            background: white;
+            padding: 1rem;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .calendar-day.other-month {
+            background: #f8f9fa;
+            color: #999;
+        }
+
+        .calendar-day.has-event {
+            background: #fff5f5;
+        }
+
+        .day-number {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .day-event {
+            background: #e74c3c;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            margin-bottom: 0.2rem;
+            cursor: pointer;
+        }
+
+        .day-event:hover {
+            background: #c0392b;
+        }
+
+        /* Results Section */
+        .results {
+            background: #f8f9fa;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .result-title {
+            color: #c0392b;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .result-list {
+            list-style: none;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-position {
+            background: #e74c3c;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .result-position.gold {
+            background: #f39c12;
+        }
+
+        .result-position.silver {
+            background: #95a5a6;
+        }
+
+        .result-position.bronze {
+            background: #e67e22;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: #c0392b;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+        }
+
+        .newsletter-button {
+            background: white;
+            color: #c0392b;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .newsletter-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .filter-container {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+
+            .events-grid,
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .calendar-grid {
+                font-size: 0.8rem;
+            }
+
+            .calendar-day {
+                min-height: 60px;
+                padding: 0.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in {
+            animation: slideIn 0.4s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">TC Allonnes</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="club.html">Le Club</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="#" class="active">Événements</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div>
+            <h1>Événements</h1>
+            <p>Tournois, stages, compétitions... Découvrez toute l'actualité du club</p>
+        </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+        <div class="filter-container">
+            <button class="filter-tab active" onclick="filterEvents('all')">Tous</button>
+            <button class="filter-tab" onclick="filterEvents('tournoi')">Tournois</button>
+            <button class="filter-tab" onclick="filterEvents('stage')">Stages</button>
+            <button class="filter-tab" onclick="filterEvents('competition')">Compétitions</button>
+            <button class="filter-tab" onclick="filterEvents('social')">Événements Sociaux</button>
+        </div>
+    </div>
+
+    <!-- Upcoming Events Section -->
+    <section class="events section">
+        <div class="container">
+            <h2 class="section-title">Événements à Venir</h2>
+            <div class="events-grid" id="eventsGrid">
+                <div class="event-card" data-type="tournoi">
+                    <div class="event-image">🏆</div>
+                    <div class="event-date">15<br>AVR</div>
+                    <div class="event-type tournoi">Tournoi</div>
+                    <div class="event-content">
+                        <h3 class="event-title">Tournoi Interne Printemps</h3>
+                        <div class="event-meta">
+                            <span>📍 Club Allonnes</span>
+                            <span>👥 Tous niveaux</span>
+                        </div>
+                        <p class="event-description">
+                            Notre traditionnel tournoi de printemps ouvert à tous les adhérents. 
+                            Tableaux par catégories d'âge et de niveau.
+                        </p>
+                        <button class="event-button">S'inscrire</button>
+                    </div>
+                </div>
+
+                <div class="event-card" data-type="stage">
+                    <div class="event-image">🎾</div>
+                    <div class="event-date">22<br>AVR</div>
+                    <div class="event-type stage">Stage</div>
+                    <div class="event-content">
+                        <h3 class="event-title">Stage Vacances Printemps</h3>
+                        <div class="event-meta">
+                            <span>📍 Club Allonnes</span>
+                            <span>👥 6-16 ans</span>
+                        </div>
+                        <p class="event-description">
+                            Stage intensif pendant les vacances de Pâques. 
+                            5 jours d'entraînement pour progresser rapidement.
+                        </p>
+                        <button class="event-button">Réserver</button>
+                    </div>
+                </div>
+
+                <div class="event-card" data-type="competition">
+                    <div class="event-image">⚡</div>
+                    <div class="event-date">05<br>MAI</div>
+                    <div class="event-type competition">Compétition</div>
+                    <div class="event-content">
+                        <h3 class="event-title">Championnat Départemental</h3>
+                        <div class="event-meta">
+                            <span>📍 Divers clubs</span>
+                            <span>👥 Équipes TC Allonnes</span>
+                        </div>
+                        <p class="event-description">
+                            Nos équipes participent aux phases finales du championnat. 
+                            Venez les encourager !
+                        </p>
+                        <button class="event-button">Programme</button>
+                    </div>
+                </div>
+
+                <div class="event-card" data-type="social">
+                    <div class="event-image">🎉</div>
+                    <div class="event-date">12<br>MAI</div>
+                    <div class="event-type">Social</div>
+                    <div class="event-content">
+                        <h3 class="event-title">Barbecue du Club</h3>
+                        <div class="event-meta">
+                            <span>📍 Club-house</span>
+                            <span>👥 Tous adhérents</span>
+                        </div>
+                        <p class="event-description">
+                            Moment convivial pour tous les membres du club et leurs familles. 
+                            Grillades, jeux et bonne humeur au programme !
+                        </p>
+                        <button class="event-button">Participer</button>
+                    </div>
+                </div>
+
+                <div class="event-card" data-type="tournoi">
+                    <div class="event-image">🌟</div>
+                    <div class="event-date">25<br>MAI</div>
+                    <div class="event-type tournoi">Tournoi</div>
+                    <div class="event-content">
+                        <h3 class="event-title">Open d'Allonnes</h3>
+                        <div class="event-meta">
+                            <span>📍 Club Allonnes</span>
+                            <span>👥 Ouvert à tous</span>
+                        </div>
+                        <p class="event-description">
+                            Grand tournoi open homologué FFT. 
+                            Ouvert aux joueurs extérieurs, de nombreux lots à gagner !
+                        </p>
+                        <button class="event-button">Inscriptions ouvertes</button>
+                    </div>
+                </div>
+
+                <div class="event-card" data-type="stage">
+                    <div class="event-image">☀️</div>
+                    <div class="event-date">08<br>JUL</div>
+                    <div class="event-type stage">Stage</div>
+                    <div class="event-content">
+                        <h3 class="event-title">Stage Été Intensif</h3>
+                        <div class="event-meta">
+                            <span>📍 Club Allonnes</span>
+                            <span>👥 Tous âges</span>
+                        </div>
+                        <p class="event-description">
+                            Stage d'été sur 2 semaines. Technique, physique et matchs. 
+                            Formule demi-pension disponible.
+                        </p>
+                        <button class="event-button" disabled>Bientôt ouvert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section class="calendar section">
+        <div class="container">
+            <h2 class="section-title">Calendrier</h2>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button class="calendar-nav" onclick="changeMonth(-1)">‹ Précédent</button>
+                    <div class="calendar-month" id="currentMonth">Avril 2024</div>
+                    <button class="calendar-nav" onclick="changeMonth(1)">Suivant ›</button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Calendar will be generated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results section">
+        <div class="container">
+            <h2 class="section-title">Derniers Résultats</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h3 class="result-title">🏆 Tournoi Interne Hiver</h3>
+                    <ul class="result-list">
+                        <li class="result-item">
+                            <span>Marc Dubois</span>
+                            <span class="result-position gold">1</span>
+                        </li>
+                        <li class="result-item">
+                            <span>Sophie Martin</span>
+                            <span class="result-position silver">2</span>
+                        </li>
+                        <li class="result-item">
+                            <span>Pierre Lefebvre</span>
+                            <span class="result-position bronze">3</span>
+                        </li>
+                        <li class="result-item">
+                            <span>Claire Rousseau</span>
+                            <span class="result-position">4</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="result-card">
+                    <h3 class="result-title">⚡ Championnat Départemental</h3>
+                    <ul class="result-list">
+                        <li class="result-item">
+                            <span>Équipe 1 Seniors</span>
+                            <span class="result-position silver">2e</span>
+                        </li>
+                        <li class="result-item">
+                            <span>Équipe Jeunes -15</span>
+                            <span class="result-position gold">1er</span>
+                        </li>
+                        <li class="result-item">
+                            <span>Équipe 2 Seniors</span>
+                            <span class="result-position">5e</span>
+                        </li>
+                        <li class="result-item">
+                            <span>Équipe Vétérans</span>
+                            <span class="result-position bronze">3e</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter section">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 1rem;">Ne ratez aucun événement !</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                Abonnez-vous à notre newsletter pour être informé de tous nos événements
+            </p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" class="newsletter-input" placeholder="Votre adresse email" required>
+                <button type="submit" class="newsletter-button">S'abonner</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Tennis Club Allonnes. Tous droits réservés.</p>
+            <p>Rue des Sports, 72700 Allonnes - 02 43 XX XX XX</p>
+        </div>
+    </footer>
+
+    <script>
+        // Filter events
+        function filterEvents(type) {
+            const cards = document.querySelectorAll('.event-card');
+            const tabs = document.querySelectorAll('.filter-tab');
+            
+            // Update active tab
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Show/hide cards
+            cards.forEach(card => {
+                if (type === 'all' || card.dataset.type === type) {
+                    card.classList.remove('hidden');
+                    card.style.animation = 'fadeInUp 0.6s ease-out';
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Calendar functionality
+        let currentDate = new Date(2024, 3); // April 2024
+
+        function generateCalendar(date) {
+            const grid = document.getElementById('calendarGrid');
+            const monthElement = document.getElementById('currentMonth');
+            
+            const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+                          'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+            
+            monthElement.textContent = `${months[date.getMonth()]} ${date.getFullYear()}`;
+            
+            // Clear previous calendar
+            grid.innerHTML = '';
+            
+            // Add day headers
+            const days = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
+            days.forEach(day => {
+                const header = document.createElement('div');
+                header.style.background = '#c0392b';
+                header.style.color = 'white';
+                header.style.fontWeight = 'bold';
+                header.style.textAlign = 'center';
+                header.style.padding = '1rem';
+                header.textContent = day;
+                grid.appendChild(header);

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Club - Tennis Club Allonnes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: "🎾";
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(255,255,255,0.1);
+            color: #f8c471;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(192, 57, 43, 0.8), rgba(231, 76, 60, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23c0392b" width="1200" height="400"/><circle fill="%23e74c3c" cx="300" cy="100" r="50"/><circle fill="%23e74c3c" cx="900" cy="300" r="80"/><rect fill="%23922b21" x="0" y="350" width="1200" height="50"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #c0392b;
+        }
+
+        /* Histoire Section */
+        .histoire {
+            background: #f8f9fa;
+        }
+
+        .histoire-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .histoire-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .histoire-image {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            height: 350px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .histoire-image::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 60%;
+            height: 60%;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        /* Équipe Section */
+        .equipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .membre-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .membre-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .membre-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .membre-card h3 {
+            color: #c0392b;
+            margin-bottom: 0.5rem;
+        }
+
+        .membre-role {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* Installations Section */
+        .installations {
+            background: #f8f9fa;
+        }
+
+        .installations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .installation-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .installation-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .installation-image {
+            height: 200px;
+            background: linear-gradient(45deg, #c0392b, #e74c3c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+        }
+
+        .installation-content {
+            padding: 1.5rem;
+        }
+
+        .installation-card h3 {
+            color: #c0392b;
+            margin-bottom: 1rem;
+        }
+
+        /* Valeurs Section */
+        .valeurs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .valeur-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 4px solid #e74c3c;
+            transition: all 0.3s;
+        }
+
+        .valeur-card:hover {
+            transform: translateY(-5px);
+            border-top-width: 8px;
+        }
+
+        .valeur-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .valeur-card h3 {
+            color: #c0392b;
+            margin-bottom: 1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: #c0392b;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #f8c471;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 0 10px 10px 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid #c0392b;
+            color: #c0392b;
+        }
+
+        .cta-button.secondary:hover {
+            background: #c0392b;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .histoire-content {
+                grid-template-columns: 1fr;
+            }
+
+            .installations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .stat-number {
+            animation: countUp 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">TC Allonnes</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="#" class="active">Le Club</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#actualites">Actualités</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div>
+            <h1>Notre Club</h1>
+            <p>L'histoire, les valeurs et l'équipe du Tennis Club d'Allonnes</p>
+        </div>
+    </section>
+
+    <!-- Histoire Section -->
+    <section class="histoire section">
+        <div class="container">
+            <h2 class="section-title">Notre Histoire</h2>
+            <div class="histoire-content">
+                <div class="histoire-text">
+                    <p>
+                        <strong>1985</strong> - Fondation du Tennis Club d'Allonnes par un groupe de passionnés de tennis 
+                        désireux de créer un lieu convivial pour la pratique de ce sport dans la commune.
+                    </p>
+                    <p>
+                        <strong>1990</strong> - Construction des premiers courts en terre battue et du club-house. 
+                        Le club compte alors 50 adhérents et organise ses premiers tournois locaux.
+                    </p>
+                    <p>
+                        <strong>2000</strong> - Extension des installations avec l'ajout de courts couverts, permettant 
+                        la pratique toute l'année. Lancement de l'école de tennis avec des professeurs diplômés.
+                    </p>
+                    <p>
+                        <strong>2010-2024</strong> - Modernisation continue des équipements, développement des activités 
+                        jeunes et adultes. Aujourd'hui, le club rassemble plus de 200 adhérents de tous âges et niveaux.
+                    </p>
+                </div>
+                <div class="histoire-image">
+                    🏆📅
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Équipe Section -->
+    <section class="equipe section">
+        <div class="container">
+            <h2 class="section-title">Notre Équipe</h2>
+            <div class="equipe-grid">
+                <div class="membre-card">
+                    <div class="membre-avatar">👨‍💼</div>
+                    <h3>Jean-Pierre Martin</h3>
+                    <div class="membre-role">Président</div>
+                    <p>Passionné de tennis depuis 30 ans, Jean-Pierre dirige le club avec dévouement et vision depuis 2018.</p>
+                </div>
+                <div class="membre-card">
+                    <div class="membre-avatar">🎾</div>
+                    <h3>Sophie Dubois</h3>
+                    <div class="membre-role">Professeure Principale</div>
+                    <p>Diplômée d'État, Sophie enseigne le tennis avec passion et accompagne tous les niveaux depuis 2015.</p>
+                </div>
+                <div class="membre-card">
+                    <div class="membre-avatar">⚡</div>
+                    <h3>Marc Lefebvre</h3>
+                    <div class="membre-role">Entraîneur Compétition</div>
+                    <p>Ancien joueur classé, Marc prépare nos équipes pour les championnats départementaux et régionaux.</p>
+                </div>
+                <div class="membre-card">
+                    <div class="membre-avatar">👥</div>
+                    <h3>Claire Rousseau</h3>
+                    <div class="membre-role">Secrétaire</div>
+                    <p>Claire s'occupe des inscriptions, de l'accueil et coordonne toute la vie administrative du club.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installations Section -->
+    <section class="installations section">
+        <div class="container">
+            <h2 class="section-title">Nos Installations</h2>
+            <div class="installations-grid">
+                <div class="installation-card">
+                    <div class="installation-image">🌿</div>
+                    <div class="installation-content">
+                        <h3>4 Courts Terre Battue</h3>
+                        <p>Courts extérieurs en terre battue rouge, entretenus quotidiennement pour un jeu optimal. 
+                        Éclairage LED pour les sessions en soirée.</p>
+                    </div>
+                </div>
+                <div class="installation-card">
+                    <div class="installation-image">🏟️</div>
+                    <div class="installation-content">
+                        <h3>2 Courts Couverts</h3>
+                        <p>Terrain synthétique couvert permettant de jouer toute l'année, même par mauvais temps. 
+                        Idéal pour les cours et l'entraînement hivernal.</p>
+                    </div>
+                </div>
+                <div class="installation-card">
+                    <div class="installation-image">🏠</div>
+                    <div class="installation-content">
+                        <h3>Club-House</h3>
+                        <p>Espace convivial avec vestiaires, bar, salle de réunion et terrasse. 
+                        Lieu de détente et d'échanges entre les membres du club.</p>
+                    </div>
+                </div>
+                <div class="installation-card">
+                    <div class="installation-image">🚗</div>
+                    <div class="installation-content">
+                        <h3>Parking & Accessibilité</h3>
+                        <p>Parking gratuit de 50 places, accès PMR, proximité des transports en commun. 
+                        Installations facilement accessibles à tous.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valeurs Section -->
+    <section class="valeurs section">
+        <div class="container">
+            <h2 class="section-title">Nos Valeurs</h2>
+            <div class="valeurs-grid">
+                <div class="valeur-card">
+                    <div class="valeur-icon">🤝</div>
+                    <h3>Convivialité</h3>
+                    <p>Un esprit familial et chaleureux où chacun trouve sa place, du débutant au compétiteur.</p>
+                </div>
+                <div class="valeur-card">
+                    <div class="valeur-icon">📈</div>
+                    <h3>Progression</h3>
+                    <p>Un enseignement de qualité adapté à chaque niveau pour accompagner votre évolution.</p>
+                </div>
+                <div class="valeur-card">
+                    <div class="valeur-icon">⚡</div>
+                    <h3>Passion</h3>
+                    <p>L'amour du tennis transmis par une équipe passionnée et compétente.</p>
+                </div>
+                <div class="valeur-card">
+                    <div class="valeur-icon">🎯</div>
+                    <h3>Excellence</h3>
+                    <p>Des installations et un encadrement de qualité pour une pratique optimale du tennis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Adhérents</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Courts</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Professeurs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">39</div>
+                    <div class="stat-label">Années d'existence</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section">
+        <div class="

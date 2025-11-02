@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Tarifs - Tennis Club Allonnes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: "🎾";
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(255,255,255,0.1);
+            color: #f8c471;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(192, 57, 43, 0.8), rgba(231, 76, 60, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23c0392b" width="1200" height="400"/><circle fill="%23e74c3c" cx="200" cy="150" r="60"/><circle fill="%23e74c3c" cx="1000" cy="250" r="80"/><rect fill="%23922b21" x="0" y="350" width="1200" height="50"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #c0392b;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border-top: 4px solid #e74c3c;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-header {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-subtitle {
+            opacity: 0.9;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            color: #e74c3c;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Tarifs Section */
+        .tarifs {
+            background: #f8f9fa;
+        }
+
+        .tarifs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tarif-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tarif-card.popular {
+            border: 3px solid #e74c3c;
+            transform: scale(1.05);
+        }
+
+        .tarif-card.popular::before {
+            content: "POPULAIRE";
+            background: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 0 15px 0 15px;
+        }
+
+        .tarif-header {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .tarif-card.popular .tarif-header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .tarif-type {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tarif-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .tarif-period {
+            opacity: 0.9;
+        }
+
+        .tarif-content {
+            padding: 2rem;
+        }
+
+        .tarif-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .tarif-features li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .tarif-features li:before {
+            content: "✓";
+            color: #e74c3c;
+            font-weight: bold;
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .tarif-features li.unavailable {
+            color: #999;
+        }
+
+        .tarif-features li.unavailable:before {
+            content: "✗";
+            color: #ccc;
+        }
+
+        .tarif-button {
+            background: linear-gradient(45deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .tarif-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Planning Section */
+        .planning-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .planning-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .planning-table th {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .planning-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .planning-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .niveau-badge {
+            background: #e74c3c;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        .niveau-badge.debutant {
+            background: #27ae60;
+        }
+
+        .niveau-badge.intermediaire {
+            background: #f39c12;
+        }
+
+        .niveau-badge.avance {
+            background: #e74c3c;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: #f8f9fa;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            background: #c0392b;
+            color: white;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: #e74c3c;
+        }
+
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+        }
+
+        .faq-answer.open {
+            padding: 1.5rem;
+            max-height: 200px;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-toggle.open {
+            transform: rotate(45deg);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #c0392b;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-button {
+            background: white;
+            color: #c0392b;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 0 10px 10px 0;
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .services-grid,
+            .tarifs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tarif-card.popular {
+                transform: none;
+            }
+
+            .planning-table {
+                overflow-x: auto;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <img src="307beb75-bdbe-4994-92e4-e66b5ea1acff-removebg-preview.png" alt="tutu">
+            <div>TC Allonnes</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="club.html">Le Club</a></li>
+                    <li><a href="#" class="active">Services</a></li>
+                    <li><a href="evenements.html">Événements</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div>
+            <h1>Services & Tarifs</h1>
+            <p>Découvrez nos cours, formules et tarifs adaptés à tous les niveaux</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">👶</div>
+                        <div class="service-title">Baby Tennis</div>
+                        <div class="service-subtitle">4-6 ans</div>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Initiation ludique au tennis</li>
+                            <li>Développement de la motricité</li>
+                            <li>Matériel adapté (raquettes courtes, balles molles)</li>
+                            <li>Groupes de 6 enfants maximum</li>
+                            <li>Séances de 45 minutes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🎾</div>
+                        <div class="service-title">École de Tennis</div>
+                        <div class="service-subtitle">7-17 ans</div>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Cours par niveau et âge</li>
+                            <li>Apprentissage technique complet</li>
+                            <li>Préparation aux compétitions</li>
+                            <li>Galop FFT (Galaxy Tennis)</li>
+                            <li>Stages vacances disponibles</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🏆</div>
+                        <div class="service-title">Cours Adultes</div>
+                        <div class="service-subtitle">18+ ans</div>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Cours débutants à confirmés</li>
+                            <li>Cours individuels et collectifs</li>
+                            <li>Perfectionnement tactique</li>
+                            <li>Préparation physique spécifique</li>
+                            <li>Horaires flexibles</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">⚡</div>
+                        <div class="service-title">Compétition</div>
+                        <div class="service-subtitle">Tous niveaux</div>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Équipes jeunes et adultes</li>
+                            <li>Championnats départementaux</li>
+                            <li>Tournois internes</li>
+                            <li>Entraînement spécifique</li>
+                            <li>Suivi personnalisé</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tarifs Section -->
+    <section class="tarifs section">
+        <div class="container">
+            <h2 class="section-title">Nos Tarifs 2024-2025</h2>
+            <div class="tarifs-grid">
+                <div class="tarif-card">
+                    <div class="tarif-header">
+                        <div class="tarif-type">Adhésion Simple</div>
+                        <div class="tarif-price">45€</div>
+                        <div class="tarif-period">par an</div>
+                    </div>
+                    <div class="tarif-content">
+                        <ul class="tarif-features">
+                            <li>Accès aux courts (réservation)</li>
+                            <li>Participation à la vie du club</li>
+                            <li>Tournois internes</li>
+                            <li class="unavailable">Cours inclus</li>
+                            <li class="unavailable">Compétition</li>
+                        </ul>
+                        <button class="tarif-button">S'inscrire</button>
+                    </div>
+                </div>
+
+                <div class="tarif-card popular">
+                    <div class="tarif-header">
+                        <div class="tarif-type">École de Tennis</div>
+                        <div class="tarif-price">280€</div>
+                        <div class="tarif-period">par an</div>
+                    </div>
+                    <div class="tarif-content">
+                        <ul class="tarif-features">
+                            <li>Adhésion incluse</li>
+                            <li>1h de cours/semaine</li>
+                            <li>Prêt de matériel</li>
+                            <li>Suivi personnalisé</li>
+                            <li>Tournois internes</li>
+                        </ul>
+                        <button class="tarif-button">S'inscrire</button>
+                    </div>
+                </div>
+
+                <div class="tarif-card">
+                    <div class="tarif-header">
+                        <div class="tarif-type">Compétition</div>
+                        <div class="tarif-price">350€</div>
+                        <div class="tarif-period">par an</div>
+                    </div>
+                    <div class="tarif-content">
+                        <ul class="tarif-features">
+                            <li>École de tennis incluse</li>
+                            <li>Entraînement compétition</li>
+                            <li>Championnats par équipes</li>
+                            <li>Licence FFT incluse</li>
+                            <li>Suivi spécialisé</li>
+                        </ul>
+                        <button class="tarif-button">S'inscrire</button>
+                    </div>
+                </div>
+
+                <div class="tarif-card">
+                    <div class="tarif-header">
+                        <div class="tarif-type">Cours Particulier</div>
+                        <div class="tarif-price">35€</div>
+                        <div class="tarif-period">par heure</div>
+                    </div>
+                    <div class="tarif-content">
+                        <ul class="tarif-features">
+                            <li>Cours individuel 1h</li>
+                            <li>Professeur diplômé</li>
+                            <li>Programme personnalisé</li>
+                            <li>Horaires à la carte</li>
+                            <li>Progression rapide</li>
+                        </ul>
+                        <button class="tarif-button">Réserver</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <p><strong>💡 Bon à savoir :</strong> Réductions familiales disponibles (2ème enfant -20%, 3ème enfant -30%)</p>
+                <p>Paiement en 3 fois sans frais possible • Chèques vacances acceptés</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planning Section -->
+    <section class="planning section">
+        <div class="container">
+            <h2 class="section-title">Planning des Cours</h2>
+            <div class="planning-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Horaire</th>
+                            <th>Lundi</th>
+                            <th>Mercredi</th>
+                            <th>Samedi</th>
+                            <th>Dimanche</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>9h-10h</strong></td>
+                            <td>-</td>
+                            <td>Baby Tennis <span class="niveau-badge debutant">4-6 ans</span></td>
+                            <td>Adultes <span class="niveau-badge debutant">Débutant</span></td>
+                            <td>Compétition <span class="niveau-badge avance">Avancé</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>10h-11h</strong></td>
+                            <td>Adultes <span class="niveau-badge intermediaire">Inter</span></td>
+                            <td>Jeunes <span class="niveau-badge debutant">7-10 ans</span></td>
+                            <td>Adultes <span class="niveau-badge intermediaire">Inter</span></td>
+                            <td>Loisir libre</td>
+                        </tr>
+                        <tr>
+                            <td><strong>14h-15h</strong></td>
+                            <td>-</td>
+                            <td>Jeunes <span class="niveau-badge intermediaire">11-14 ans</span></td>
+                            <td>Jeunes <span class="niveau-badge debutant">7-10 ans</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>15h-16h</strong></td>
+                            <td>-</td>
+                            <td>Jeunes <span class="niveau-badge avance">15-17 ans</span></td>
+                            <td>Jeunes <span class="niveau-badge intermediaire">11-14 ans</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>18h-19h</strong></td>
+                            <td>Adultes <span class="niveau-badge debutant">Débutant</span></td>
+                            <td>Compétition <span class="niveau-badge avance">Adultes</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>19h-20h</strong></td>
+                            <td>Adultes <span class="niveau-badge avance">Confirmé</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq section">
+        <div class="container">
+            <h2 class="section-title">Questions Fréquentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Faut-il apporter son matériel ?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Pour les cours enfants, le matériel est fourni (raquettes adaptées, balles). Pour les adultes et les cours particuliers, nous recommandons d'avoir sa propre raquette, mais nous pouvons en prêter si besoin.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Peut-on essayer avant de s'inscrire ?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Bien sûr ! Nous proposons un cours d'essai gratuit pour tous les nouveaux adhérents. Contactez-nous pour planifier votre séance découverte.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Que se passe-t-il en cas de mauvais temps ?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Nous disposons de 2 courts couverts qui permettent de maintenir les cours même en cas de pluie. Les cours annulés sont automatiquement reportés.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Y a-t-il des stages pendant les vacances ?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, nous organisons des stages intensifs pendant toutes les vacances scolaires, pour tous les niveaux. Programme disponible 1 mois avant chaque période de vacances.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 1rem;">Prêt à commencer ?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                Rejoignez le Tennis Club d'Allonnes et découvrez le plaisir du tennis !
+            </p>
+            <a href="#contact" class="cta-button">S'inscrire maintenant</a>
+            <a href="#contact" class="cta-button">Cours d'essai gratuit</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Tennis Club Allonnes. Tous droits réservés.</p>
+            <p>Rue des Sports, 72700 Allonnes - 02 43 XX XX XX</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                toggle.classList.remove('open');
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer.open').forEach(openAnswer => {
+                    openAnswer.classList.remove('open');
+                    openAnswer.previousElementSibling.querySelector('.faq-toggle').classList.remove('open');
+                });
+                
+                // Open this FAQ
+                answer.classList.add('open');
+                toggle.classList.add('open');
+            }
+        }
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Card hover effects
+        document.querySelectorAll('.service-card, .tarif-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('popular')) {
+                    this.style.transform = 'translateY(-10px)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('popular')) {
+                    this.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Button animations
+        document.querySelectorAll('.tarif-button, .cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.classList.contains('tarif-button')) {
+                    e.preventDefault();
+                    this.innerHTML = 'Demande envoyée !';
+                    this.style.background = '#27ae60';
+                    setTimeout(() => {
+                        this.innerHTML = this.closest('.tarif-card').querySelector('.tarif-type').textContent.includes('Particulier') ? 'Réserver' : 'S\'inscrire';
+                        this.style.background = '';
+                    }, 2000);
+                }
+            });
+        });
+
+        // Table row hover effects
+        document.querySelectorAll('.planning-table tr').forEach(row => {
+            row.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#f8f9fa';
+            });
+            
+            row.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '';
+            });
+        });
+    </script>
+</body>
+</html>
