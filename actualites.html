@@ -97,43 +97,6 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
-        /* Filter Tabs */
-        .filter-tabs {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 1rem 0;
-            position: sticky;
-            top: 70px;
-            z-index: 999;
-        }
-
-        .filter-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-tab {
-            background: transparent;
-            border: 2px solid #c0392b;
-            color: #c0392b;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-
-        .filter-tab.active,
-        .filter-tab:hover {
-            background: #c0392b;
-            color: white;
-        }
-
         /* Sections */
         .section {
             padding: 4rem 0;
@@ -557,9 +520,9 @@
                 <ul class="nav-menu">
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="club.html">Le Club</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="#" class="active">Événements</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="services.html">Enseignement</a></li>
+                    <li class="active"><a href="actualites.html">Actualités</a></li>
+                    <!-- <li><a href="contact.html">Contact</a></li> -->
                 </ul>
             </nav>
         </div>
@@ -572,17 +535,6 @@
             <p>Tournois, stages, compétitions... Découvrez toute l'actualité du club</p>
         </div>
     </section>
-
-    <!-- Filter Tabs -->
-    <div class="filter-tabs">
-        <div class="filter-container">
-            <button class="filter-tab active" onclick="filterEvents('all')">Tous</button>
-            <button class="filter-tab" onclick="filterEvents('tournoi')">Tournois</button>
-            <button class="filter-tab" onclick="filterEvents('stage')">Stages</button>
-            <button class="filter-tab" onclick="filterEvents('competition')">Compétitions</button>
-            <button class="filter-tab" onclick="filterEvents('social')">Événements Sociaux</button>
-        </div>
-    </div>
 
     <!-- Upcoming Events Section -->
     <section class="events section">
@@ -790,51 +742,4 @@
             <p>Rue des Sports, 72700 Allonnes - 02 43 XX XX XX</p>
         </div>
     </footer>
-
-    <script>
-        // Filter events
-        function filterEvents(type) {
-            const cards = document.querySelectorAll('.event-card');
-            const tabs = document.querySelectorAll('.filter-tab');
-            
-            // Update active tab
-            tabs.forEach(tab => tab.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // Show/hide cards
-            cards.forEach(card => {
-                if (type === 'all' || card.dataset.type === type) {
-                    card.classList.remove('hidden');
-                    card.style.animation = 'fadeInUp 0.6s ease-out';
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-        }
-
-        // Calendar functionality
-        let currentDate = new Date(2024, 3); // April 2024
-
-        function generateCalendar(date) {
-            const grid = document.getElementById('calendarGrid');
-            const monthElement = document.getElementById('currentMonth');
-            
-            const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-                          'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
-            
-            monthElement.textContent = `${months[date.getMonth()]} ${date.getFullYear()}`;
-            
-            // Clear previous calendar
-            grid.innerHTML = '';
-            
-            // Add day headers
-            const days = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
-            days.forEach(day => {
-                const header = document.createElement('div');
-                header.style.background = '#c0392b';
-                header.style.color = 'white';
-                header.style.fontWeight = 'bold';
-                header.style.textAlign = 'center';
-                header.style.padding = '1rem';
-                header.textContent = day;
-                grid.appendChild(header);
+</body>
