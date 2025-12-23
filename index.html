@@ -1,339 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tennis Club Allonnes - Sarthe</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo::before {
-            content: "🎾";
-            margin-right: 10px;
-            font-size: 2rem;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-        }
-
-        .nav-menu a:hover {
-            background: rgba(255,255,255,0.1);
-            color: #f8c471;
-        }
-
-        /* Hero Section */
-        .hero {
-            background-image: url("test.jpg");
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 0 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .cta-button {
-            background: linear-gradient(45deg, #c0392b, #e74c3c);
-            color: white;
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        /* Sections */
-        .section {
-            padding: 4rem 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #c0392b;
-        }
-
-        /* About Section */
-        .about {
-            background: #f8f9fa;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .about-image {
-            background: linear-gradient(45deg, #e74c3c, #c0392b);
-            height: 300px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            color: #c0392b;
-            margin-bottom: 1rem;
-        }
-
-        /* News Section */
-        .news {
-            background: #f8f9fa;
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .news-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .news-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .news-image {
-            height: 200px;
-            background: linear-gradient(45deg, #c0392b, #e74c3c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-        }
-
-        .news-content {
-            padding: 1.5rem;
-        }
-
-        .news-date {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: #c0392b;
-            color: white;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-form {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 15px;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 5px;
-            background: rgba(255,255,255,0.9);
-        }
-
-        /* Footer */
-        .footer {
-            background: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.6s ease-out;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/index.css">
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -345,6 +19,7 @@
                     <li><a href="club.html">Le Club</a></li>
                     <li><a href="services.html">Enseignement</a></li>
                     <li><a href="actualites.html">Actualités</a></li>
+                    <li><a target="_blank" href="https://tenup.fft.fr/club/61720371/reservations">Réserver</a></li>
                     <!-- <li><a href="contact.html">Contact</a></li> -->
                 </ul>
             </nav>
@@ -356,6 +31,12 @@
         <div class="hero-content fade-in">
             <h1>Tennis Club Allonnes</h1>
             <p>Votre passion pour le tennis au cœur de la Sarthe</p>
+            <h2>Réservez un court</h2>
+            <div class="reservation-ctn">
+                <a class="btn" target="_blank" href="https://tenup.fft.fr/club/61720371/reservations">Adhérents</a>
+                <a class="btn" target="_blank"
+                    href="https://www.anybuddyapp.com/club-js-allonnes-allonnes/reservation/tennis?activity=tennis">Externes</a>
+            </div>
         </div>
     </section>
 
@@ -366,13 +47,13 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        Fondé en 1985, le Tennis Club d'Allonnes est un club convivial situé au cœur de la Sarthe. 
-                        Nous accueillons tous les passionnés de tennis, des débutants aux joueurs confirmés, 
+                        Fondé en 1985, le Tennis Club d'Allonnes est un club convivial situé au cœur de la Sarthe.
+                        Nous accueillons tous les passionnés de tennis, des débutants aux joueurs confirmés,
                         dans une atmosphère chaleureuse et familiale.
                     </p>
                     <p>
-                        Nos installations modernes comprennent 4 courts en terre battue et 2 courts couverts, 
-                        permettant de jouer toute l'année dans d'excellentes conditions. Notre équipe d'enseignants 
+                        Nos installations modernes comprennent 4 courts en terre battue et 2 courts couverts,
+                        permettant de jouer toute l'année dans d'excellentes conditions. Notre équipe d'enseignants
                         diplômés propose des cours adaptés à tous les niveaux.
                     </p>
                 </div>
@@ -422,7 +103,8 @@
                     <div class="news-content">
                         <div class="news-date">15 Mars 2024</div>
                         <h3>Tournoi Interne Printemps 2024</h3>
-                        <p>Inscriptions ouvertes pour notre tournoi interne qui se déroulera du 20 au 28 avril. Toutes catégories d'âge bienvenues !</p>
+                        <p>Inscriptions ouvertes pour notre tournoi interne qui se déroulera du 20 au 28 avril. Toutes
+                            catégories d'âge bienvenues !</p>
                     </div>
                 </div>
                 <div class="news-card">
@@ -430,7 +112,8 @@
                     <div class="news-content">
                         <div class="news-date">8 Mars 2024</div>
                         <h3>Nouveaux Cours Collectifs</h3>
-                        <p>Lancement de nouveaux créneaux de cours collectifs adultes. Parfait pour débuter ou se perfectionner en groupe.</p>
+                        <p>Lancement de nouveaux créneaux de cours collectifs adultes. Parfait pour débuter ou se
+                            perfectionner en groupe.</p>
                     </div>
                 </div>
                 <div class="news-card">
@@ -438,7 +121,8 @@
                     <div class="news-content">
                         <div class="news-date">1er Mars 2024</div>
                         <h3>Résultats Championnat</h3>
-                        <p>Félicitations à nos équipes qui se qualifient pour les phases finales du championnat départemental !</p>
+                        <p>Félicitations à nos équipes qui se qualifient pour les phases finales du championnat
+                            départemental !</p>
                     </div>
                 </div>
             </div>
@@ -531,10 +215,11 @@
         });
 
         // Form submission handler
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.querySelector('form').addEventListener('submit', function (e) {
             e.preventDefault();
             alert('Merci pour votre message ! Nous vous répondrons rapidement.');
         });
     </script>
 </body>
+
 </html>

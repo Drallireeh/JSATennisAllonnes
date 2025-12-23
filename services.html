@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +27,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
@@ -66,10 +67,13 @@
             border-radius: 5px;
         }
 
+        .nav-menu a:active {
+            font-weight: bold;
+        }
+
         .nav-menu a:hover,
         .nav-menu a.active {
-            background: rgba(255,255,255,0.1);
-            color: #f8c471;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         /* Page Header */
@@ -89,12 +93,12 @@
         .page-header h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .page-header p {
             font-size: 1.3rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         /* Sections */
@@ -127,7 +131,7 @@
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
             border-top: 4px solid #e74c3c;
         }
@@ -196,7 +200,7 @@
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
             position: relative;
         }
@@ -291,7 +295,7 @@
 
         .tarif-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Planning Section */
@@ -299,7 +303,7 @@
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             margin-top: 2rem;
         }
 
@@ -355,7 +359,7 @@
             margin-bottom: 1rem;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .faq-question {
@@ -412,14 +416,14 @@
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             margin: 0 10px 10px 0;
             font-weight: bold;
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         /* Footer */
@@ -460,6 +464,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -471,12 +476,12 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
         <div class="nav-container">
-            <!-- <img src="307beb75-bdbe-4994-92e4-e66b5ea1acff-removebg-preview.png" alt="tutu"> -->
-                        <div class="logo">TC Allonnes</div>
+            <div class="logo">TC Allonnes</div>
             <nav>
                 <ul class="nav-menu">
                     <li><a href="index.html">Accueil</a></li>
@@ -556,7 +561,7 @@
         </div>
     </section>
 
- <!-- Planning Section -->
+    <!-- Planning Section -->
     <section class="planning section">
         <div class="container">
             <h2 class="section-title">Planning des Cours</h2>
@@ -680,7 +685,7 @@
                     </div>
                 </div>
 
-        </div>
+            </div>
     </section>
 
     <!-- Footer -->
@@ -712,13 +717,13 @@
 
         // Card hover effects
         document.querySelectorAll('.service-card, .tarif-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
+            card.addEventListener('mouseenter', function () {
                 if (!this.classList.contains('popular')) {
                     this.style.transform = 'translateY(-10px)';
                 }
             });
-            
-            card.addEventListener('mouseleave', function() {
+
+            card.addEventListener('mouseleave', function () {
                 if (!this.classList.contains('popular')) {
                     this.style.transform = 'translateY(0)';
                 }
@@ -727,7 +732,7 @@
 
         // Button animations
         document.querySelectorAll('.tarif-button, .cta-button').forEach(button => {
-            button.addEventListener('click', function(e) {
+            button.addEventListener('click', function (e) {
                 if (this.classList.contains('tarif-button')) {
                     e.preventDefault();
                     this.innerHTML = 'Demande envoyée !';
@@ -743,14 +748,15 @@
         //TODO à faire en css
         // Table row hover effects
         document.querySelectorAll('.planning-table tr').forEach(row => {
-            row.addEventListener('mouseenter', function() {
+            row.addEventListener('mouseenter', function () {
                 this.style.backgroundColor = '#f8f9fa';
             });
-            
-            row.addEventListener('mouseleave', function() {
+
+            row.addEventListener('mouseleave', function () {
                 this.style.backgroundColor = '';
             });
         });
     </script>
 </body>
+
 </html>

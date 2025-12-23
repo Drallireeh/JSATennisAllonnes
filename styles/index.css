@@ -1,0 +1,371 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+  color: white;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.logo::before {
+  content: "🎾";
+  margin-right: 10px;
+  font-size: 2rem;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.nav-menu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+  background-image: url("../assets/test.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.hero-content h2 {
+  margin-bottom: 10px;
+}
+
+.hero-content .reservation-ctn {
+  width: 400px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: auto;
+}
+
+.hero-content .btn {
+  display: flex; /* clé */
+  align-items: center; /* centrage vertical */
+  justify-content: center; /* centrage horizontal */
+  width: 130px;
+  height: 45px;
+
+  background-color: #e74c3c;
+  border: 1px solid #c0392b;
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.42) 0 1px 3px 0;
+
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+
+  transition: all 250ms;
+}
+
+.hero-content .btn:hover,
+.hero-content .btn:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content .btn:active {
+  background-color: #c85000;
+  transform: translateY(0);
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.cta-button {
+  background: linear-gradient(45deg, #c0392b, #e74c3c);
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Sections */
+.section {
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #c0392b;
+}
+
+/* About Section */
+.about {
+  background: #f8f9fa;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.about-image {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  height: 300px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: white;
+}
+
+/* Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.service-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  color: #c0392b;
+  margin-bottom: 1rem;
+}
+
+/* News Section */
+.news {
+  background: #f8f9fa;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.news-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+}
+
+.news-image {
+  height: 200px;
+  background: linear-gradient(45deg, #c0392b, #e74c3c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+}
+
+.news-content {
+  padding: 1.5rem;
+}
+
+.news-date {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Contact Section */
+.contact {
+  background: #c0392b;
+  color: white;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+}
+
+.contact-form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Footer */
+.footer {
+  background: #1a1a1a;
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .about-content,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
