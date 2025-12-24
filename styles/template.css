@@ -10,6 +10,10 @@ body {
   color: #333;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 /* Header */
 .header {
   background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
@@ -38,11 +42,16 @@ body {
   align-items: center;
 }
 
-.logo::before {
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+/* .logo::before {
   content: "🎾";
   margin-right: 10px;
   font-size: 2rem;
-}
+} */
 
 .nav-menu {
   display: flex;
@@ -73,7 +82,26 @@ body {
   background: #1a1a1a;
   color: white;
   text-align: center;
-  padding: 2rem 0;
+  padding: 2rem 0 1rem 0;
+}
+
+.footer .contact-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.footer .droits-reserves {
+  font-size: .75rem;
+}
+
+.footer .mentions-legales {
+  font-size: .875rem;
+}
+
+.footer a {
+  color: white;
 }
 
 /* Animations */
