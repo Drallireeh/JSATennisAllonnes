@@ -259,14 +259,6 @@
   background: rgba(255, 255, 255, 0.9);
 }
 
-/* Footer */
-.footer {
-  background: #1a1a1a;
-  color: white;
-  text-align: center;
-  padding: 2rem 0;
-}
-
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .nav-menu {
