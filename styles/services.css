@@ -287,6 +287,14 @@
   background: #f8f9fa;
 }
 
+.tarifs .section-title {
+  margin-bottom: 1rem;
+}
+
+.tarifs .container.jeunes .section-title {
+  margin-top: 1rem;
+}
+
 .tarifs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -348,7 +356,7 @@
 }
 
 .tarif-content {
-  padding: 2rem;
+  padding: 2rem 2rem 2rem 2rem;
 }
 
 .tarif-features {
@@ -377,44 +385,6 @@
 .tarif-features li.unavailable:before {
   content: "✗";
   color: #ccc;
-}
-
-.tarif-button {
-  background: linear-gradient(45deg, #c0392b, #e74c3c);
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 1rem;
-  width: 100%;
-  transition: all 0.3s;
-}
-
-.tarif-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.niveau-badge {
-  background: #e74c3c;
-  color: white;
-  padding: 0.3rem 0.8rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  display: inline-block;
-}
-
-.niveau-badge.debutant {
-  background: #27ae60;
-}
-
-.niveau-badge.intermediaire {
-  background: #f39c12;
-}
-
-.niveau-badge.avance {
-  background: #e74c3c;
 }
 
 /* FAQ Section */
