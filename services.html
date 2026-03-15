@@ -78,7 +78,7 @@
     <!-- Page Header -->
     <section class="page-header">
         <div>
-            <h1>Services & Tarifs</h1>
+            <h1>Enseignements & Tarifs</h1>
             <p>Découvrez nos cours, formules et tarifs adaptés à tous les niveaux</p>
         </div>
     </section>
@@ -146,122 +146,226 @@
     <section class="planning section">
         <div class="container">
             <h2 class="section-title">Planning des Cours</h2>
-            <div class="planning-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Horaire</th>
-                            <th>Mardi</th>
-                            <th>Mercredi</th>
-                            <th>Jeudi</th>
-                            <th>Vendredi</th>
-                            <th>Samedi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>9h-10h30</strong></td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>Balle dure jeune</td>
-                        </tr>
-                        <tr>
-                            <td><strong>10h30-11h30</strong></td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>Niveau Violet - Rouge - Orange - Vert</td>
-                        </tr>
-                        <tr>
-                            <!--  <span class="niveau-badge intermediaire">11-14 ans</span>, <span class="niveau-badge debutant">7-10 ans</span> -->
-                            <td><strong>11h30-12h30</strong></td>
-                            <td>-</td>
-                            <td>Niveau Rouge</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>Baby Tennis</td>
-                        </tr>
-                        <tr>
-                            <td><strong>13h30-14h30</strong></td>
-                            <td>-</td>
-                            <td>Niveau Orange - Vert</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td><strong>14h30-16h</strong></td>
-                            <td>-</td>
-                            <td>Balle dure jeune</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td><strong>16h-17h30</strong></td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>Adultes</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td><strong>17h30-18h30</strong></td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>Niveau vert</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td><strong>17h30-19h</strong></td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>Balle dure jeune</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td><strong>18h30-20h</strong></td>
-                            <td>Adultes <span class="niveau-badge avance">Compétition</span></td>
-                            <td>Adultes</td>
-                            <td>-</td>
-                            <td>Adultes</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td><strong>19h-20h30</strong></td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>Adultes <span class="niveau-badge avance">Compétition</span></td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td><strong>20h-21h30</strong></td>
-                            <td>Adultes</td>
-                            <td>Adultes</td>
-                            <td>-</td>
-                            <td>Adultes</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td><strong>20h30-22h</strong></td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>Adultes <span class="niveau-badge avance">Compétition</span></td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: linear-gradient(135deg, #f39c12, #f1c40f);"></div>
+                    <span>Baby Tennis (4-6 ans)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: linear-gradient(135deg, #27ae60, #2ecc71);"></div>
+                    <span>Jeunes (Niveaux)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: linear-gradient(135deg, #3498db, #5dade2);"></div>
+                    <span>Adultes Loisir</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: linear-gradient(135deg, #8e44ad, #9b59b6);"></div>
+                    <span>Compétition</span>
+                </div>
+            </div>
+
+            <!-- Filtres par jour -->
+            <div class="day-filters">
+                <button class="day-filter active" onclick="filterDay('mardi')">Mardi</button>
+                <button class="day-filter" onclick="filterDay('mercredi')">Mercredi</button>
+                <button class="day-filter" onclick="filterDay('jeudi')">Jeudi</button>
+                <button class="day-filter" onclick="filterDay('vendredi')">Vendredi</button>
+                <button class="day-filter" onclick="filterDay('samedi')">Samedi</button>
+            </div>
+
+            <!-- MARDI -->
+            <div class="planning-day active" data-day="mardi">
+                <h3 class="day-name">Mardi</h3>
+                <div class="time-slots">
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">18h30 - 20h00</span>
+                            <span class="course-type competition">Compétition</span>
+                        </div>
+                        <div class="course-details">
+                            Adultes Compétition
+                        </div>
+                    </div>
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">20h00 - 21h30</span>
+                            <span class="course-type adultes">Adultes</span>
+                        </div>
+                        <div class="course-details">
+                            Cours adultes loisir - Tous niveaux
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MERCREDI -->
+            <div class="planning-day" data-day="mercredi">
+                <h3 class="day-name">Mercredi</h3>
+                <div class="time-slots">
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">11h30 - 12h30</span>
+                            <span class="course-type jeunes">Jeunes</span>
+                        </div>
+                        <div class="course-details">
+                            Niveau Rouge - Enfants débutants
+                        </div>
+                    </div>
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">13h30 - 14h30</span>
+                            <span class="course-type jeunes">Jeunes</span>
+                        </div>
+                        <div class="course-details">
+                            Niveau Orange - Vert - Progression intermédiaire
+                        </div>
+                    </div>
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">14h30 - 16h00</span>
+                            <span class="course-type jeunes">Jeunes</span>
+                        </div>
+                        <div class="course-details">
+                            Balle dure jeune - Perfectionnement technique
+                        </div>
+                    </div>
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">18h30 - 20h00</span>
+                            <span class="course-type adultes">Adultes</span>
+                        </div>
+                        <div class="course-details">
+                            Cours adultes loisir - Tous niveaux
+                        </div>
+                    </div>
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">20h00 - 21h30</span>
+                            <span class="course-type adultes">Adultes</span>
+                        </div>
+                        <div class="course-details">
+                            Cours adultes loisir - Tous niveaux
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JEUDI -->
+            <div class="planning-day" data-day="jeudi">
+                <h3 class="day-name">Jeudi</h3>
+                <div class="time-slots">
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">17h30 - 19h00</span>
+                            <span class="course-type jeunes">Jeunes</span>
+                        </div>
+                        <div class="course-details">
+                            Balle dure jeune - Perfectionnement technique
+                        </div>
+                    </div>
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">19h00 - 20h30</span>
+                            <span class="course-type competition">Compétition</span>
+                        </div>
+                        <div class="course-details">
+                            Adultes Compétition - Entraînement intensif
+                        </div>
+                    </div>
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">20h30 - 22h00</span>
+                            <span class="course-type competition">Compétition</span>
+                        </div>
+                        <div class="course-details">
+                            Adultes Compétition - Entraînement intensif
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VENDREDI -->
+            <div class="planning-day" data-day="vendredi">
+                <h3 class="day-name">Vendredi</h3>
+                <div class="time-slots">
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">16h00 - 17h30</span>
+                            <span class="course-type adultes">Adultes</span>
+                        </div>
+                        <div class="course-details">
+                            Cours adultes loisir - Tous niveaux
+                        </div>
+                    </div>
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">17h30 - 18h30</span>
+                            <span class="course-type jeunes">Jeunes</span>
+                        </div>
+                        <div class="course-details">
+                            Niveau Vert - Progression intermédiaire
+                        </div>
+                    </div>
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">18h30 - 20h00</span>
+                            <span class="course-type adultes">Adultes</span>
+                        </div>
+                        <div class="course-details">
+                            Cours adultes loisir - Tous niveaux
+                        </div>
+                    </div>
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">20h00 - 21h30</span>
+                            <span class="course-type adultes">Adultes</span>
+                        </div>
+                        <div class="course-details">
+                            Cours adultes loisir - Tous niveaux
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SAMEDI -->
+            <div class="planning-day" data-day="samedi">
+                <h3 class="day-name">Samedi</h3>
+                <div class="time-slots">
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">9h00 - 10h30</span>
+                            <span class="course-type jeunes">Jeunes</span>
+                        </div>
+                        <div class="course-details">
+                            Balle dure jeune - Perfectionnement technique
+                        </div>
+                    </div>
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">10h30 - 11h30</span>
+                            <span class="course-type jeunes">Jeunes</span>
+                        </div>
+                        <div class="course-details">
+                            Niveau Violet - Rouge - Orange - Vert - Tous niveaux jeunes
+                        </div>
+                    </div>
+                    <div class="time-slot">
+                        <div class="time-slot-header">
+                            <span class="time">11h30 - 12h30</span>
+                            <span class="course-type baby">Baby Tennis</span>
+                        </div>
+                        <div class="course-details">
+                            Initiation pour les 4-6 ans - Découverte ludique du tennis
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    
     <!-- Tarifs Section -->
     <section class="tarifs section">
         <div class="container">
@@ -459,6 +563,21 @@
                 this.style.backgroundColor = '';
             });
         });
+
+         // Filter by day
+        function filterDay(day) {
+            // Update buttons
+            document.querySelectorAll('.day-filter').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Show selected day
+            document.querySelectorAll('.planning-day').forEach(dayDiv => {
+                dayDiv.classList.remove('active');
+            });
+            document.querySelector(`[data-day="${day}"]`).classList.add('active');
+        }
     </script>
 </body>
 

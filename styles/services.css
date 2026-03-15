@@ -1,6 +1,7 @@
 /* Page Header */
 .page-header {
-  background: linear-gradient(rgba(192, 57, 43, 0.8), rgba(231, 76, 60, 0.8)),
+  background:
+    linear-gradient(rgba(192, 57, 43, 0.8), rgba(231, 76, 60, 0.8)),
     url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23c0392b" width="1200" height="400"/><circle fill="%23e74c3c" cx="200" cy="150" r="60"/><circle fill="%23e74c3c" cx="1000" cy="250" r="80"/><rect fill="%23922b21" x="0" y="350" width="1200" height="50"/></svg>');
   background-size: cover;
   background-position: center;
@@ -42,7 +43,177 @@
   color: #c0392b;
 }
 
+/* Planning */
+.planning {
+  padding-top: 0px;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 2rem 0 3rem 0;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+}
+
+/* Filtres par jour */
+.day-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.day-filter {
+  background: white;
+  border: 2px solid #c0392b;
+  color: #c0392b;
+  padding: 0.8rem 1.8rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.day-filter.active {
+  background: linear-gradient(135deg, #c0392b, #e74c3c);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
+}
+
+.day-filter:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Planning par jour */
+.planning-day {
+  display: none;
+  animation: fadeIn 0.4s ease-in;
+}
+
+.planning-day.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.day-name {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #c0392b;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.time-slots {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.time-slot {
+  background: white;
+  border-radius: 15px;
+  padding: 1.8rem;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  border-left: 6px solid #c0392b;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.time-slot:hover {
+  transform: translateX(8px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+}
+
+.time-slot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.time {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #c0392b;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time::before {
+  content: "🕐";
+  font-size: 1.2rem;
+}
+
+.course-type {
+  background: #e74c3c;
+  color: white;
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.course-type.jeunes {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+}
+
+.course-type.adultes {
+  background: linear-gradient(135deg, #3498db, #5dade2);
+}
+
+.course-type.competition {
+  background: linear-gradient(135deg, #8e44ad, #9b59b6);
+}
+
+.course-type.baby {
+  background: linear-gradient(135deg, #f39c12, #f1c40f);
+}
+
+.course-details {
+  color: #555;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
 /* Services Grid */
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -105,6 +276,10 @@
   color: #e74c3c;
   font-weight: bold;
   margin-right: 10px;
+}
+
+.services {
+	padding-bottom: 2rem;
 }
 
 /* Tarifs Section */
@@ -219,36 +394,6 @@
 .tarif-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Planning Section */
-.planning-table {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin-top: 2rem;
-}
-
-.planning-table table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.planning-table th {
-  background: linear-gradient(135deg, #c0392b, #e74c3c);
-  color: white;
-  padding: 1rem;
-  text-align: left;
-}
-
-.planning-table td {
-  padding: 1rem;
-  border-bottom: 1px solid #eee;
-}
-
-.planning-table tr:hover {
-  background: #f8f9fa;
 }
 
 .niveau-badge {
@@ -368,7 +513,37 @@
     transform: none;
   }
 
-  .planning-table {
-    overflow-x: auto;
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .day-filters {
+    gap: 0.6rem;
+  }
+
+  .day-filter {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .time-slot {
+    padding: 1.2rem;
+  }
+
+  .time {
+    font-size: 1.1rem;
+  }
+
+  .time-slot-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .legend {
+    gap: 1rem;
+  }
+
+  .legend-item {
+    font-size: 0.85rem;
   }
 }
