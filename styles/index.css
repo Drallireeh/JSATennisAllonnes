@@ -144,6 +144,11 @@
   margin-top: 2rem;
 }
 
+.service-card:last-child {
+  grid-column: 2 / 3; /* Se place exactement sur la 2ème colonne */
+  width: 100%;
+}
+
 .service-card {
   background: white;
   padding: 2rem;
