@@ -177,6 +177,29 @@
 }
 
 /* Valeurs Section */
+.valeurs-image {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  height: 300px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: white;
+}
+
+.valeurs-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.valeurs-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
 .valeurs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
