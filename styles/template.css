@@ -34,9 +34,9 @@ header .rs {
 }
 
 .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .rs > a {
@@ -58,7 +58,6 @@ header .rs {
 .rs > a > i svg:hover {
   opacity: 0.6;
 }
-
 
 /* Header */
 .header {
@@ -172,3 +171,187 @@ header .rs {
 .fade-in {
   animation: fadeInUp 0.6s ease-out;
 }
+
+/* Burger menu */
+
+#smartphone-menu {
+  width: 40px;
+  height: 40px;
+  padding: 0 5px;
+  position: relative;
+  display: none;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: white;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.burger-menu {
+  width: 100%;
+  height: 2px;
+  background: white;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.burger-menu::before,
+.burger-menu::after {
+  content: "";
+  position: absolute;
+  width: calc(100% - 10px);
+  height: 2px;
+  background: white;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.burger-menu::before {
+  -webkit-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  transform: translateY(-10px);
+}
+
+.burger-menu::after {
+  -webkit-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  transform: translateY(10px);
+}
+
+#smartphone-menu.open .burger-menu {
+  -webkit-transform: translateX(-50px);
+  -ms-transform: translateX(-50px);
+  transform: translateX(-50px);
+  background: transparent;
+}
+
+#smartphone-menu.open .burger-menu::before {
+  -webkit-transform: rotate(45deg) translate(35px, -35px);
+  -ms-transform: rotate(45deg) translate(35px, -35px);
+  transform: rotate(45deg) translate(35px, -35px);
+  width: 30px;
+}
+
+#smartphone-menu.open .burger-menu::after {
+  -webkit-transform: rotate(-45deg) translate(35px, 35px);
+  -ms-transform: rotate(-45deg) translate(35px, 35px);
+  transform: rotate(-45deg) translate(35px, 35px);
+  width: 30px;
+}
+
+@media (max-width: 1024px) {
+  header nav ul {
+    display: none;
+  }
+
+  header .rs {
+    display: none;
+  }
+
+  header #smartphone-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .nav-fixed--mobile {
+    background-color: #e74c3c;
+    width: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    top: 82px;
+    z-index: 999999999;
+    right: 0px;
+    position: absolute;
+    width: 140px;
+  }
+
+  .nav-fixed--mobile li {
+    padding: 10px 10px;
+  }
+
+  .nav-fixed--desktop {
+    display: none;
+    visibility: hidden;
+  }
+
+  .nav-fixed--mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    visibility: visible;
+  }
+}
+
+/* 
+.nav-fixed {
+    width: 100%;
+    height: 100px;
+    background: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    z-index: 999;
+    padding: 0 12px;
+    position: fixed;
+    height: 100px;
+    width: inherit;
+    box-sizing: border-box;
+}
+
+.nav-fixed--desktop {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.nav-fixed--desktop li{
+    list-style: none;
+    margin-right: 24px;
+    min-height: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.nav-fixed--desktop li a,
+.nav-fixed--mobile li a {
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-fixed--dropdown li a {
+    text-transform: none;
+} 
+
+.nav-fixed--desktop li:last-of-type{
+    margin-right: 0;
+} */

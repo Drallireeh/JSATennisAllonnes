@@ -347,10 +347,6 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .nav-menu {
-    display: none;
-  }
-
   .page-header {
     height: 40vh;
   }
