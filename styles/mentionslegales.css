@@ -29,3 +29,20 @@
 .legal-content > p {
     text-indent: 1.5em;
 }
+
+@media (max-width: 768px) {
+    .legal-content {
+        width: 90%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .legal-content p {
+        line-height: 1.3em;
+    }
+
+    .legal-content h2 {
+        margin-top: 20px;
+    }
+}
