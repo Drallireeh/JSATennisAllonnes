@@ -466,6 +466,10 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+  .page-header div {
+		padding: 0 10px;
+	}
+  
   .page-header h1 {
     font-size: 2rem;
   }

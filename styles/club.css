@@ -301,16 +301,8 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-	.section {
-		padding: 2rem 0;
-	}
-
 	.page-header div {
 		padding: 0 10px;
-	}
-
-	.section-title {
-		margin-bottom: 2rem;
 	}
 
 	.page-header h1 {
