@@ -266,7 +266,7 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-.section {
+  .section {
     padding: 2rem 0;
   }
 
@@ -287,7 +287,7 @@
     grid-template-columns: 1fr;
   }
 
-  /* On annule le positionnement forcé sur mobile */
+  /* Annule le positionnement forcé sur mobile */
   .service-card:last-child {
     grid-column: auto;
   }
