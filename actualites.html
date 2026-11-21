@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="styles/template.css">
     <link rel="stylesheet" href="styles/actualites.css">
     <script src="scripts/template.js" defer></script>
+    <link rel="stylesheet" href="styles/analytics.css">
+    <script src="scripts/analytics.js" defer></script>
 </head>
 
 <body>
@@ -19,7 +21,11 @@
                 TC Allonnes
             </div>
             <div class="nav-right">
-                <nav>
+                <nav aria-label="Navigation principale">
+                    <button id="smartphone-menu" type="button" aria-label="Menu principal"
+                        aria-expanded="false" aria-controls="menu">
+                        <span class="burger-menu" aria-hidden="true"></span>
+                    </button>
                     <ul id="menu" class="nav-menu nav-fixed--desktop">
                         <li><a href="index.html">Accueil</a></li>
                         <li><a href="club.html">Le Club</a></li>
@@ -27,9 +33,6 @@
                         <li><a href="actualites.html" class="active">Actualités</a></li>
                         <!-- <li><a href="contact.html">Contact</a></li> -->
                     </ul>
-                    <div id="smartphone-menu">
-                        <div class="burger-menu"></div>
-                    </div>
                 </nav>
                 <div class="rs">
                     <a target="_blank"

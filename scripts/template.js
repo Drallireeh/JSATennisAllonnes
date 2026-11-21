@@ -1,24 +1,53 @@
-let smMenu = document.getElementById("smartphone-menu");
+(() => {
+    const toggle = document.getElementById('smartphone-menu');
+    const menu = document.getElementById('menu');
+    if (!toggle || !menu) return;
 
-smMenu.addEventListener("click", function () {
-    let menu = document.getElementById("menu");
-    if (getComputedStyle(menu, null).display === "none") {
-        menu.classList.add('nav-fixed--mobile');
-        menu.classList.remove('nav-fixed--desktop');
-        smMenu.classList.add("open");
-        // Ferme le menu en au clic outside
-        document.addEventListener("click", function (e) {
-            if (!e.target.classList.contains("open") && !e.target.classList.contains("burger-menu")) {
-                menu.classList.remove("nav-fixed--mobile");
-                menu.classList.add('nav-fixed--desktop');
-                smMenu.classList.remove("open");
-                removeEventListener("click", document);
-            }
-        });
+    const navigation = toggle.closest('nav');
+    const mobile = window.matchMedia('(max-width: 1024px)');
+    let open = false;
+
+    function setOpen(value, restoreFocus = false) {
+        open = mobile.matches && value;
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.classList.toggle('open', open);
+        menu.classList.toggle('nav-fixed--mobile', open);
+        menu.classList.toggle('nav-fixed--desktop', !open);
+        menu.hidden = mobile.matches && !open;
+        if (restoreFocus) toggle.focus();
     }
-    else {
-        menu.classList.remove("nav-fixed--mobile");
-        menu.classList.add('nav-fixed--desktop');
-        smMenu.classList.remove("open");
-    }
-});
+
+    toggle.addEventListener('click', () => setOpen(!open));
+
+    document.addEventListener('keydown', event => {
+        if (open && event.key === 'Escape') {
+            event.preventDefault();
+            setOpen(false, true);
+        }
+    });
+
+    document.addEventListener('click', event => {
+        if (open && !navigation.contains(event.target)) setOpen(false);
+    });
+
+    menu.addEventListener('click', event => {
+        if (open && event.target.closest('a')) setOpen(false, true);
+    });
+
+    // Tab reste libre : fermer une fois le focus sorti de la navigation.
+    navigation.addEventListener('focusout', event => {
+        if (open && event.relatedTarget && !navigation.contains(event.relatedTarget)) {
+            setOpen(false);
+        }
+    });
+
+    mobile.addEventListener('change', () => {
+        const active = document.activeElement;
+        const focusWasInMenu = menu.contains(active);
+        setOpen(false);
+        if (mobile.matches && focusWasInMenu) toggle.focus();
+        else if (!mobile.matches && active === toggle) menu.querySelector('a')?.focus();
+    });
+
+    setOpen(false);
+})();

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../styles/template.css">
     <link rel="stylesheet" href="../styles/mentionslegales.css">
     <script src="../scripts/template.js" defer></script>
+    <link rel="stylesheet" href="../styles/analytics.css">
+    <script src="../scripts/analytics.js" defer></script>
 </head>
 
 <body>
@@ -21,7 +23,11 @@
                 TC Allonnes
             </div>
             <div class="nav-right">
-                <nav>
+                <nav aria-label="Navigation principale">
+                    <button id="smartphone-menu" type="button" aria-label="Menu principal"
+                        aria-expanded="false" aria-controls="menu">
+                        <span class="burger-menu" aria-hidden="true"></span>
+                    </button>
                     <ul id="menu" class="nav-menu nav-fixed--desktop">
                         <li><a href="../index.html">Accueil</a></li>
                         <li><a href="../club.html">Le Club</a></li>
@@ -29,9 +35,6 @@
                         <li><a href="../actualites.html">Actualités</a></li>
                         <!-- <li><a href="../contact.html">Contact</a></li> -->
                     </ul>
-                    <div id="smartphone-menu">
-                        <div class="burger-menu"></div>
-                    </div>
                 </nav>
                 <div class="rs">
                     <a target="_blank"
@@ -144,21 +147,23 @@
 
         <p>
             Toutefois, le site peut utiliser le service <strong>Google Analytics</strong>,
-            un service d’analyse de site internet fourni par Google Inc., afin de mesurer
+            un service d’analyse de site internet fourni par Google, afin de mesurer
             l’audience et améliorer le contenu du site.
         </p>
 
         <p>
             Google Analytics utilise des cookies susceptibles de collecter des données
             telles que l’adresse IP, les pages consultées ou le type de navigateur.
-            Ces données sont traitées de manière anonymisée et ne permettent pas
-            d’identifier personnellement l’utilisateur.
+            Ces données peuvent constituer des données personnelles. Le service n’est
+            chargé qu’après votre accord ; les fonctionnalités publicitaires sont désactivées.
         </p>
 
         <p>
             L’utilisateur peut refuser l’utilisation des cookies de mesure d’audience
-            en configurant son navigateur ou via le bandeau de consentement affiché
-            lors de sa première visite.
+            via le bandeau de consentement affiché lors de sa première visite.
+            Le refus est aussi simple que l’acceptation. Le choix est conservé pendant six mois
+            dans le navigateur et peut être modifié ou retiré à tout moment avec le bouton
+            « Gérer les cookies » en bas de chaque page.
         </p>
 
         <h2>Cookies</h2>

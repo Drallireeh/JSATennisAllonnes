@@ -169,6 +169,10 @@ header .rs {
 /* Burger menu */
 
 #smartphone-menu {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  font: inherit;
   width: 40px;
   height: 40px;
   padding: 0 5px;
@@ -189,7 +193,20 @@ header .rs {
   transition: all 0.2s ease-in-out;
 }
 
+.nav-menu[hidden] {
+  display: none !important;
+}
+
+#smartphone-menu:focus-visible,
+.nav-menu a:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #222;
+}
+
 .burger-menu {
+  position: relative;
+  display: block;
   width: 100%;
   height: 2px;
   background: white;
@@ -203,7 +220,9 @@ header .rs {
 .burger-menu::after {
   content: "";
   position: absolute;
-  width: calc(100% - 10px);
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 2px;
   background: white;
   border-radius: 5px;
@@ -213,15 +232,15 @@ header .rs {
 }
 
 .burger-menu::before {
-  -webkit-transform: translateY(-10px);
-  -ms-transform: translateY(-10px);
-  transform: translateY(-10px);
+  -webkit-transform: translate(0, -10px) rotate(0);
+  -ms-transform: translate(0, -10px) rotate(0);
+  transform: translate(0, -10px) rotate(0);
 }
 
 .burger-menu::after {
-  -webkit-transform: translateY(10px);
-  -ms-transform: translateY(10px);
-  transform: translateY(10px);
+  -webkit-transform: translate(0, 10px) rotate(0);
+  -ms-transform: translate(0, 10px) rotate(0);
+  transform: translate(0, 10px) rotate(0);
 }
 
 #smartphone-menu.open .burger-menu {
@@ -232,17 +251,15 @@ header .rs {
 }
 
 #smartphone-menu.open .burger-menu::before {
-  -webkit-transform: rotate(45deg) translate(35px, -35px);
-  -ms-transform: rotate(45deg) translate(35px, -35px);
-  transform: rotate(45deg) translate(35px, -35px);
-  width: 30px;
+  -webkit-transform: translate(50px, 0) rotate(45deg);
+  -ms-transform: translate(50px, 0) rotate(45deg);
+  transform: translate(50px, 0) rotate(45deg);
 }
 
 #smartphone-menu.open .burger-menu::after {
-  -webkit-transform: rotate(-45deg) translate(35px, 35px);
-  -ms-transform: rotate(-45deg) translate(35px, 35px);
-  transform: rotate(-45deg) translate(35px, 35px);
-  width: 30px;
+  -webkit-transform: translate(50px, 0) rotate(-45deg);
+  -ms-transform: translate(50px, 0) rotate(-45deg);
+  transform: translate(50px, 0) rotate(-45deg);
 }
 
 @media (max-width: 768px) {
@@ -285,6 +302,8 @@ header .rs {
     -ms-flex-direction: column;
     flex-direction: column;
     top: 82px;
+    max-height: calc(100dvh - 82px);
+    overflow-y: auto;
     z-index: 999999999;
     right: 0px;
     position: absolute;
@@ -310,5 +329,14 @@ header .rs {
     display: -ms-flexbox;
     display: flex;
     visibility: visible;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #smartphone-menu,
+  .burger-menu,
+  .burger-menu::before,
+  .burger-menu::after {
+    transition: none;
   }
 }
