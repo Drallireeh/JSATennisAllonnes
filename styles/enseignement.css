@@ -2,7 +2,7 @@
 .page-header {
   background:
     linear-gradient(rgba(192, 57, 43, 0.8), rgba(231, 76, 60, 0.8)),
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23c0392b" width="1200" height="400"/><circle fill="%23e74c3c" cx="200" cy="150" r="60"/><circle fill="%23e74c3c" cx="1000" cy="250" r="80"/><rect fill="%23922b21" x="0" y="350" width="1200" height="50"/></svg>');
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23a92f24" width="1200" height="400"/><circle fill="%23b52d20" cx="200" cy="150" r="60"/><circle fill="%23b52d20" cx="1000" cy="250" r="80"/><rect fill="%23922b21" x="0" y="350" width="1200" height="50"/></svg>');
   background-size: cover;
   background-position: center;
   height: 30vh;
@@ -40,7 +40,7 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #c0392b;
+  color: #a92f24;
 }
 
 /* Planning */
@@ -84,8 +84,8 @@
 
 .day-filter {
   background: white;
-  border: 2px solid #c0392b;
-  color: #c0392b;
+  border: 2px solid #a92f24;
+  color: #a92f24;
   padding: 0.8rem 1.8rem;
   border-radius: 30px;
   cursor: pointer;
@@ -96,7 +96,7 @@
 }
 
 .day-filter.active {
-  background: linear-gradient(135deg, #c0392b, #e74c3c);
+  background: linear-gradient(135deg, #a92f24, #b52d20);
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
@@ -109,7 +109,7 @@
 
 /* Planning par jour */
 .planning-day {
-  display: none;
+  display: block;
   animation: fadeIn 0.4s ease-in;
 }
 
@@ -131,7 +131,7 @@
 .day-name {
   text-align: center;
   font-size: 1.8rem;
-  color: #c0392b;
+  color: #a92f24;
   margin-bottom: 2rem;
   font-weight: bold;
 }
@@ -146,7 +146,7 @@
   border-radius: 15px;
   padding: 1.8rem;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
-  border-left: 6px solid #c0392b;
+  border-left: 6px solid #a92f24;
   transition: all 0.3s;
   position: relative;
 }
@@ -168,7 +168,7 @@
 .time {
   font-size: 1.4rem;
   font-weight: bold;
-  color: #c0392b;
+  color: #a92f24;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -180,7 +180,7 @@
 }
 
 .course-type {
-  background: #e74c3c;
+  background: #b52d20;
   color: white;
   padding: 0.4rem 1.2rem;
   border-radius: 20px;
@@ -227,7 +227,7 @@
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
-  border-top: 4px solid #e74c3c;
+  border-top: 4px solid #b52d20;
 }
 
 .service-card:hover {
@@ -235,7 +235,7 @@
 }
 
 .service-header {
-  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  background: linear-gradient(45deg, #b52d20, #a92f24);
   color: white;
   padding: 2rem;
   text-align: center;
@@ -273,7 +273,7 @@
 
 .service-features li:before {
   content: "✓";
-  color: #e74c3c;
+  color: #b52d20;
   font-weight: bold;
   margin-right: 10px;
 }
@@ -312,13 +312,13 @@
 }
 
 .tarif-card.popular {
-  border: 3px solid #e74c3c;
+  border: 3px solid #b52d20;
   transform: scale(1.05);
 }
 
 .tarif-card.popular::before {
   content: "POPULAIRE";
-  background: #e74c3c;
+  background: #b52d20;
   color: white;
   padding: 0.5rem 1rem;
   position: absolute;
@@ -330,14 +330,14 @@
 }
 
 .tarif-header {
-  background: linear-gradient(135deg, #c0392b, #e74c3c);
+  background: linear-gradient(135deg, #a92f24, #b52d20);
   color: white;
   padding: 2rem;
   text-align: center;
 }
 
 .tarif-card.popular .tarif-header {
-  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  background: linear-gradient(135deg, #b52d20, #a92f24);
 }
 
 .tarif-type {
@@ -372,7 +372,7 @@
 
 .tarif-features li:before {
   content: "✓";
-  color: #e74c3c;
+  color: #b52d20;
   font-weight: bold;
   margin-right: 10px;
   width: 20px;
@@ -401,7 +401,7 @@
 }
 
 .faq-question {
-  background: #c0392b;
+  background: #a92f24;
   color: white;
   padding: 1.5rem;
   cursor: pointer;
@@ -412,7 +412,7 @@
 }
 
 .faq-question:hover {
-  background: #e74c3c;
+  background: #b52d20;
 }
 
 .faq-answer {
@@ -438,14 +438,14 @@
 
 /* CTA Section */
 .cta-section {
-  background: #c0392b;
+  background: #a92f24;
   color: white;
   text-align: center;
 }
 
 .cta-button {
   background: white;
-  color: #c0392b;
+  color: #a92f24;
   padding: 15px 30px;
   font-size: 1.1rem;
   border: none;

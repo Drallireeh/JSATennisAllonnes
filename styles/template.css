@@ -61,7 +61,7 @@ header .rs {
 
 /* Header */
 .header {
-  background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+  background: linear-gradient(135deg, #a92f24 0%, #b52d20 100%);
   color: white;
   padding: 1rem 0;
   position: fixed;
@@ -292,7 +292,7 @@ header .rs {
   }
 
   .nav-fixed--mobile {
-    background-color: #e74c3c;
+    background-color: #b52d20;
     width: auto;
     display: -webkit-box;
     display: -ms-flexbox;

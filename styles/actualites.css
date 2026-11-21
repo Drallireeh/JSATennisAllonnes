@@ -89,7 +89,7 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #c0392b;
+  color: #a92f24;
 }
 
 /* Events Grid */
@@ -105,7 +105,7 @@
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
-  border-top: 4px solid #e74c3c;
+  border-top: 4px solid #b52d20;
   opacity: 1;
 }
 
@@ -120,7 +120,7 @@
 
 .event-image {
   height: 200px;
-  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  background: linear-gradient(45deg, #b52d20, #a92f24);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,7 +134,7 @@
   top: 15px;
   left: 15px;
   background: rgba(255, 255, 255, 0.9);
-  color: #c0392b;
+  color: #a92f24;
   padding: 0.5rem;
   border-radius: 8px;
   font-weight: bold;
@@ -155,7 +155,7 @@
 }
 
 .event-type.tournoi {
-  background: #e74c3c;
+  background: #b52d20;
   color: white;
 }
 
@@ -174,7 +174,7 @@
 }
 
 .event-title {
-  color: #c0392b;
+  color: #a92f24;
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
 }
@@ -199,7 +199,7 @@
 }
 
 .event-button {
-  background: linear-gradient(45deg, #c0392b, #e74c3c);
+  background: linear-gradient(45deg, #a92f24, #b52d20);
   color: white;
   padding: 10px 20px;
   border: none;
@@ -257,7 +257,7 @@
 }
 
 .result-title {
-  color: #c0392b;
+  color: #a92f24;
   font-size: 1.3rem;
   margin-bottom: 1rem;
   display: flex;
@@ -282,7 +282,7 @@
 }
 
 .result-position {
-  background: #e74c3c;
+  background: #b52d20;
   color: white;
   width: 30px;
   height: 30px;
@@ -308,7 +308,7 @@
 
 /* Newsletter Section */
 .newsletter {
-  background: #c0392b;
+  background: #a92f24;
   color: white;
   text-align: center;
 }
@@ -331,7 +331,7 @@
 
 .newsletter-button {
   background: white;
-  color: #c0392b;
+  color: #a92f24;
   padding: 1rem 2rem;
   border: none;
   border-radius: 25px;
