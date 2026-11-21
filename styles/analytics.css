@@ -1,0 +1,49 @@
+.analytics-consent[hidden] { display: none; }
+.analytics-consent {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    max-width: 46rem;
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+    margin: 0 auto;
+    padding: 1.25rem;
+    z-index: 1100;
+    background: #fff;
+    color: #222;
+    border: 2px solid #922b21;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 24px #0004;
+}
+.analytics-consent h2 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+.analytics-consent p { margin-bottom: 1rem; }
+.analytics-consent a { color: #922b21; text-decoration: underline; }
+.analytics-consent-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.analytics-consent-actions button {
+    flex: 1;
+    min-height: 44px;
+    padding: 0.65rem 1rem;
+    border: 2px solid #922b21;
+    border-radius: 0.25rem;
+    background: #fff;
+    color: #922b21;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+.analytics-consent-actions button:hover { background: #fbeeea; }
+.analytics-settings {
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    background: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+    border-radius: 0.25rem;
+    font: inherit;
+    cursor: pointer;
+}
+.analytics-consent :focus-visible, .analytics-settings:focus-visible {
+    outline: 3px solid #175bc2;
+    outline-offset: 3px;
+}
