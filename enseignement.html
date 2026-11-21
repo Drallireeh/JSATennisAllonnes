@@ -4,10 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enseignement - Tennis Club Allonnes</title>
+    <title>Cours de tennis, planning et tarifs | JSA Tennis Allonnes</title>
     <link rel="stylesheet" href="styles/template.css">
     <link rel="stylesheet" href="styles/enseignement.css">
     <script src="scripts/template.js" defer></script>
+    <link rel="stylesheet" href="styles/analytics.css">
+    <script src="scripts/analytics.js" defer></script>
+    <script src="scripts/planning.js" defer></script>
+    <meta name="description" content="Retrouvez les cours de tennis pour enfants et adultes, le baby tennis, le planning hebdomadaire et les tarifs du JSA Tennis Allonnes, en Sarthe.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="JSA Tennis Allonnes">
+    <meta property="og:title" content="Cours de tennis, planning et tarifs | JSA Tennis Allonnes">
+    <meta property="og:description" content="Retrouvez les cours de tennis pour enfants et adultes, le baby tennis, le planning hebdomadaire et les tarifs du JSA Tennis Allonnes, en Sarthe.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Cours de tennis, planning et tarifs | JSA Tennis Allonnes">
+    <meta name="twitter:description" content="Retrouvez les cours de tennis pour enfants et adultes, le baby tennis, le planning hebdomadaire et les tarifs du JSA Tennis Allonnes, en Sarthe.">
+    <link rel="canonical" href="https://tenniscluballonnes.fr/enseignement.html">
+    <meta property="og:url" content="https://tenniscluballonnes.fr/enseignement.html">
 </head>
 
 <body>
@@ -20,7 +35,11 @@
                 TC Allonnes
             </div>
             <div class="nav-right">
-                <nav>
+                <nav aria-label="Navigation principale">
+                    <button id="smartphone-menu" type="button" aria-label="Menu principal"
+                        aria-expanded="false" aria-controls="menu">
+                        <span class="burger-menu" aria-hidden="true"></span>
+                    </button>
                     <ul id="menu" class="nav-menu nav-fixed--desktop">
                         <li><a href="index.html">Accueil</a></li>
                         <li><a href="club.html">Le Club</a></li>
@@ -28,9 +47,6 @@
                         <li><a href="actualites.html">Actualités</a></li>
                         <!-- <li><a href="contact.html">Contact</a></li> -->
                     </ul>
-                    <div id="smartphone-menu">
-                        <div class="burger-menu"></div>
-                    </div>
                 </nav>
                 <div class="rs">
                     <a target="_blank"
@@ -176,15 +192,15 @@
 
             <!-- Filtres par jour -->
             <div class="day-filters">
-                <button class="day-filter active" onclick="filterDay('mardi')">Mardi</button>
-                <button class="day-filter" onclick="filterDay('mercredi')">Mercredi</button>
-                <button class="day-filter" onclick="filterDay('jeudi')">Jeudi</button>
-                <button class="day-filter" onclick="filterDay('vendredi')">Vendredi</button>
-                <button class="day-filter" onclick="filterDay('samedi')">Samedi</button>
+                <button class="day-filter active" type="button" data-day="mardi" aria-pressed="true" aria-controls="planning-mardi">Mardi</button>
+                <button class="day-filter" type="button" data-day="mercredi" aria-pressed="false" aria-controls="planning-mercredi">Mercredi</button>
+                <button class="day-filter" type="button" data-day="jeudi" aria-pressed="false" aria-controls="planning-jeudi">Jeudi</button>
+                <button class="day-filter" type="button" data-day="vendredi" aria-pressed="false" aria-controls="planning-vendredi">Vendredi</button>
+                <button class="day-filter" type="button" data-day="samedi" aria-pressed="false" aria-controls="planning-samedi">Samedi</button>
             </div>
 
             <!-- MARDI -->
-            <div class="planning-day active" data-day="mardi">
+            <div class="planning-day active" id="planning-mardi" data-day="mardi">
                 <h3 class="day-name">Mardi</h3>
                 <div class="time-slots">
                     <div class="time-slot">
@@ -209,7 +225,7 @@
             </div>
 
             <!-- MERCREDI -->
-            <div class="planning-day" data-day="mercredi">
+            <div class="planning-day" id="planning-mercredi" data-day="mercredi" hidden>
                 <h3 class="day-name">Mercredi</h3>
                 <div class="time-slots">
                     <div class="time-slot">
@@ -261,7 +277,7 @@
             </div>
 
             <!-- JEUDI -->
-            <div class="planning-day" data-day="jeudi">
+            <div class="planning-day" id="planning-jeudi" data-day="jeudi" hidden>
                 <h3 class="day-name">Jeudi</h3>
                 <div class="time-slots">
                     <div class="time-slot">
@@ -295,7 +311,7 @@
             </div>
 
             <!-- VENDREDI -->
-            <div class="planning-day" data-day="vendredi">
+            <div class="planning-day" id="planning-vendredi" data-day="vendredi" hidden>
                 <h3 class="day-name">Vendredi</h3>
                 <div class="time-slots">
                     <div class="time-slot">
@@ -338,7 +354,7 @@
             </div>
 
             <!-- SAMEDI -->
-            <div class="planning-day" data-day="samedi">
+            <div class="planning-day" id="planning-samedi" data-day="samedi" hidden>
                 <h3 class="day-name">Samedi</h3>
                 <div class="time-slots">
                     <div class="time-slot">
@@ -599,20 +615,6 @@
             });
         });
 
-        // Filter by day
-        function filterDay(day) {
-            // Update buttons
-            document.querySelectorAll('.day-filter').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-
-            // Show selected day
-            document.querySelectorAll('.planning-day').forEach(dayDiv => {
-                dayDiv.classList.remove('active');
-            });
-            document.querySelector(`[data-day="${day}"]`).classList.add('active');
-        }
     </script>
 </body>
 
