@@ -19,9 +19,16 @@
         });
     }
 
+    const status = document.getElementById('planning-status');
     buttons.forEach(button => {
-        button.addEventListener('click', () => selectDay(button.dataset.day));
+        button.addEventListener('click', () => {
+            selectDay(button.dataset.day);
+            if (status) status.textContent = 'Planning du ' + button.textContent.trim().toLowerCase() + ' affiché.';
+        });
     });
     const initial = buttons.find(button => button.classList.contains('active')) || buttons[0];
-    if (initial) selectDay(initial.dataset.day);
+    if (initial) {
+        selectDay(initial.dataset.day);
+        document.querySelector('.day-filters').hidden = false;
+    }
 })();

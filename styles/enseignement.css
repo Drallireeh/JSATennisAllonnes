@@ -1,7 +1,7 @@
 /* Page Header */
 .page-header {
   background:
-    linear-gradient(rgba(192, 57, 43, 0.8), rgba(231, 76, 60, 0.8)),
+    linear-gradient(#c0392b, #cf3b2b),
     url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23a92f24" width="1200" height="400"/><circle fill="%23b52d20" cx="200" cy="150" r="60"/><circle fill="%23b52d20" cx="1000" cy="250" r="80"/><rect fill="%23922b21" x="0" y="350" width="1200" height="50"/></svg>');
   background-size: cover;
   background-position: center;

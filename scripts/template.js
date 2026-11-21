@@ -3,6 +3,15 @@
     const menu = document.getElementById('menu');
     if (!toggle || !menu) return;
 
+    const header = document.querySelector('.header');
+    if (header && 'ResizeObserver' in window) {
+        const updateHeaderHeight = () => {
+            document.documentElement.style.setProperty('--header-height', header.getBoundingClientRect().height + 'px');
+        };
+        new ResizeObserver(updateHeaderHeight).observe(header);
+        updateHeaderHeight();
+    }
+
     const navigation = toggle.closest('nav');
     const mobile = window.matchMedia('(max-width: 1024px)');
     let open = false;
@@ -49,5 +58,6 @@
         else if (!mobile.matches && active === toggle) menu.querySelector('a')?.focus();
     });
 
+    navigation.dataset.enhanced = 'true';
     setOpen(false);
 })();
