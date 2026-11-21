@@ -299,40 +299,6 @@
             <p class="droits-reserves">&copy; 2026 Tennis Club Allonnes. Tous droits réservés.</p>
         </div>
     </footer>
-
-    <script>
-        // Newsletter subscription
-        function subscribeNewsletter(event) {
-            event.preventDefault();
-            const input = event.target.querySelector('.newsletter-input');
-            const button = event.target.querySelector('.newsletter-button');
-
-            button.textContent = 'Inscrit !';
-            button.style.background = '#27ae60';
-            input.value = '';
-
-            setTimeout(() => {
-                button.textContent = 'S\'abonner';
-                button.style.background = '';
-            }, 2000);
-        }
-
-        // Event button interactions
-        document.querySelectorAll('.event-button').forEach(button => {
-            button.addEventListener('click', function () {
-                if (!this.disabled) {
-                    const originalText = this.textContent;
-                    this.textContent = 'Demande envoyée !';
-                    this.style.background = '#27ae60';
-
-                    setTimeout(() => {
-                        this.textContent = originalText;
-                        this.style.background = '';
-                    }, 2000);
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>
